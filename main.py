@@ -16,3 +16,4 @@ if all_tickets > 3:
     print("Стоимость всех билетов со скидкой: ", discount_prise, "руб.")
 else:
     print("Стоимость всех билетов: ", full_prise, "руб.")
+

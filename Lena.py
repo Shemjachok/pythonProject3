@@ -2409,25 +2409,52 @@ import math
 #
 # print(r[0])
 
-import telebot
+# import telebot
+#
+# TOKEN = "6001190744:AAEWW8iibHDc_FWayhc9H7EZWnKAYxTgIo0"
+#
+# bot = telebot.TeleBot(TOKEN)
+#
+#
+# @bot.message_handler(content_types=["voice"])
+# def repeat(message:telebot.types.Message):
+#     bot.send_message(message.chat.id, "Какой смешной у тебя голос!")
+# # bot.polling(none_stop=True)
+#
+# # Обрабатываются все документы и аудиозаписи
+# @bot.message_handler(content_types=['document', 'audio'])
+# def handle_docs_audio(message):
+#     pass
+#
+# @bot.message_handler(commands=['start', 'help'])
+# def repeat(message: telebot.types.Message):
+#     bot.reply_to(message, f"Салют, {message.chat.username}")
+#
+# bot.polling(none_stop=True)
 
-TOKEN = "6001190744:AAEWW8iibHDc_FWayhc9H7EZWnKAYxTgIo0"
 
-bot = telebot.TeleBot(TOKEN)
+import requests  # импортируем наш знакомый модуль
+import lxml.html
+from lxml import etree
+
+# html = requests.get('https://www.python.org/').content  # получим html главной странички официального сайта Python
+#
+# tree = lxml.html.document_fromstring(html)
+# title = tree.xpath('/html/head/title/text()')  # забираем текст тега <title> из тега <head> который лежит в свою очередь внутри тега <html> (в этом невидимом теге <head> у нас хранится основная информация о страничке. Её название и инструкции по отображению в браузере.
+#
+# print(title)  # выводим полученный заголовок страницы
 
 
-@bot.message_handler(content_types=["voice"])
-def repeat(message:telebot.types.Message):
-    bot.send_message(message.chat.id, "У тебя очень красивый голос!")
-bot.polling(none_stop=True)
 
-# Обрабатываются все документы и аудиозаписи
-@bot.message_handler(content_types=['document', 'audio'])
-def handle_docs_audio(message):
-    pass
+from lxml import etree
 
-@bot.message_handler(commands=['start', 'help'])
-def repeat(message: telebot.types.Message):
-    bot.reply_to(message, f"Добро пожаловать, {message.chat.username}")
+# создадим объект ElementTree. Он возвращается функцией parse()
+tree = etree.parse('Welcome to Python.org.html', lxml.html.HTMLParser())  # попытаемся спарсить наш файл с помощью HTML-парсера. Сам HTML — это то, что мы скачали и поместили в папку из браузера.
 
-bot.polling(none_stop=True)
+ul = tree.findall('body/div /div[3]/ section / div[2] / div[1] / div / ul / li')  # помещаем в аргумент методу findall скопированный xpath. Здесь мы получим все элементы списка новостей. (Все заголовки и их даты)
+
+# создаём цикл? в котором будем выводить название каждого элемента из списка
+for li in ul:
+    a = li.find('a')  # в каждом элементе находим, где хранится заголовок новости. У нас это тег <a>. Т.е. гиперссылка, на которую нужно нажать, чтобы перейти на страницу с новостью. Гиперссылки в HTML — это всегда тэг <a>.
+    print(a.text)  # из этого тега забираем текст — это и будет нашим названием
+
