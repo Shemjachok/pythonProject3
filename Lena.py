@@ -2267,69 +2267,167 @@ import math
 #         qsort_random(array, i, right)
 
 
-array = [int(x) for x in input("Введите числа от 1 до 999 в любом порядке, через пробел: ").split()]
+# array = [int(x) for x in input("Введите числа от 1 до 999 в любом порядке, через пробел: ").split()]
+#
+# def merge_sort(array):  # "разделяй"
+#
+#
+#     if len(array) < 2:  # если кусок массива равен 2,
+#         return array[:]  # выход из рекурсии
+#     else:
+#         middle = len(array) // 2  # ищем середину
+#         left = merge_sort(array[:middle])  # рекурсивно делим левую часть
+#         right = merge_sort(array[middle:])  # и правую
+#         return merge(left, right)  # выполняем слияние
+#
+#
+# def merge(left, right):
+#     result = []
+#     i, j = 0, 0
+#
+#     while i < len(left) and j < len(right):
+#         if left[i] < right[j]:
+#             result.append(left[i])
+#             i += 1
+#         else:
+#             result.append(right[j])
+#             j += 1
+#
+#     while i < len(left):
+#         result.append(left[i])
+#         i += 1
+#
+#     while j < len(right):
+#         result.append(right[j])
+#         j += 1
+#
+#     return result
+#
+# print(merge_sort(array))
+#
+#
+# def binary_search(array, element, left, right):
+#     if left > right:  # если левая граница превысила правую,
+#         return False  # значит элемент отсутствует
+#
+#     middle = (right + left) // 2  # находимо середину
+#     if array[middle] == element:  # если элемент в середине,
+#         return middle  # возвращаем этот индекс
+#     elif element < array[middle]:  # если элемент меньше элемента в середине
+#         # рекурсивно ищем в левой половине
+#         return binary_search(array, element, left, middle - 1)
+#     else:  # иначе в правой
+#         return binary_search(array, element, middle + 1, right)
+#
+#
+# while True:
+#     try:
+#         element = int(input("Введите число от 1 до 999: "))
+#         if element < 0 or element > 999:
+#             raise Exception
+#         break
+#     except ValueError:
+#         print("Нужно ввести число!")
+#     except Exception:
+#         print("Неправильный диапазон!")
+#
+#
+# print(binary_search(array, element, 0,  len(array)))
 
-def merge_sort(array):  # "разделяй"
+
+# import requests
+#
+# r = requests.get(
+#     'https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html')  # делаем запрос на сервер по переданному адресу
+# print(r.content)
 
 
-    if len(array) < 2:  # если кусок массива равен 2,
-        return array[:]  # выход из рекурсии
-    else:
-        middle = len(array) // 2  # ищем середину
-        left = merge_sort(array[:middle])  # рекурсивно делим левую часть
-        right = merge_sort(array[middle:])  # и правую
-        return merge(left, right)  # выполняем слияние
+# import requests
+#
+# r = requests.get('https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html')
+# print(r.status_code)  # узнаем статус полученного ответа
 
 
-def merge(left, right):
-    result = []
-    i, j = 0, 0
-
-    while i < len(left) and j < len(right):
-        if left[i] < right[j]:
-            result.append(left[i])
-            i += 1
-        else:
-            result.append(right[j])
-            j += 1
-
-    while i < len(left):
-        result.append(left[i])
-        i += 1
-
-    while j < len(right):
-        result.append(right[j])
-        j += 1
-
-    return result
-
-print(merge_sort(array))
+# import requests
+#
+# r = requests.get('https://baconipsum.com/api/?type=meat-and-filler')  # попробуем поймать json ответ
+# print(r.content)
 
 
-def binary_search(array, element, left, right):
-    if left > right:  # если левая граница превысила правую,
-        return False  # значит элемент отсутствует
-
-    middle = (right + left) // 2  # находимо середину
-    if array[middle] == element:  # если элемент в середине,
-        return middle  # возвращаем этот индекс
-    elif element < array[middle]:  # если элемент меньше элемента в середине
-        # рекурсивно ищем в левой половине
-        return binary_search(array, element, left, middle - 1)
-    else:  # иначе в правой
-        return binary_search(array, element, middle + 1, right)
+# import requests
+# import json  # импортируем необходимую библиотеку
+#
+# r = requests.get('https://baconipsum.com/api/?type=meat-and-filler')
+# texts = json.loads(r.content)  # делаем из полученных байтов python объект для удобной работы
+# print(type(texts))  # проверяем тип сконвертированных данных
+#
+# for text in texts:  # выводим полученный текст. Но для того чтобы он влез в консоль оставим только первые 50 символов.
+#     print(text[:50], '\n')
 
 
-while True:
-    try:
-        element = int(input("Введите число от 1 до 999: "))
-        if element < 0 or element > 999:
-            raise Exception
-        break
-    except ValueError:
-        print("Нужно ввести число!")
-    except Exception:
-        print("Неправильный диапазон!")
+# import requests
+# import json
+#
+# r = requests.get('https://api.github.com')
+#
+# print(r.content)
 
 
-print(binary_search(array, element, 0,  len(array)))
+# import requests
+# import json
+#
+# r = requests.get('https://api.github.com')
+#
+# d = json.loads(r.content)  # делаем из полученных байтов python объект для удобной работы
+#
+# print(type(d))
+# print(d['following_url'])  # обращаемся к полученному объекту как к словарю и попробуем напечатать одно из его значений
+
+
+# import requests
+#
+# r = requests.post('https://httpbin.org/post', data={'key': 'value'})  # отправляем пост запрос
+# print(r.content)  # содержимое ответа и его обработка происходит так же, как и с гет-запросами, разницы никакой нет
+
+
+# import requests
+# import json
+#
+# data = {'key': 'value'}
+#
+# r = requests.post('https://httpbin.org/post', json=json.dumps(
+#     data))  # отправляем пост запрос, но только в этот раз тип передаваемых данных будет JSON
+# print(r.content)
+
+
+# import requests
+# import json
+#
+# r = requests.get('https://baconipsum.com/api/?type=meat-and-filler')
+#
+# r = json.loads(r.content)
+#
+# print(r[0])
+
+import telebot
+
+TOKEN = "6001190744:AAEWW8iibHDc_FWayhc9H7EZWnKAYxTgIo0"
+
+bot = telebot.TeleBot(TOKEN)
+
+
+@bot.message_handler(content_types=["voice"])
+def repeat(message:telebot.types.Message):
+    bot.send_message(message.chat.id, "У тебя очень красивый голос!")
+bot.polling(none_stop=True)
+
+# Обрабатываются все документы и аудиозаписи
+@bot.message_handler(content_types=['document', 'audio'])
+def handle_docs_audio(message):
+    pass
+
+@bot.message_handler(commands=['start', 'help'])
+def repeat(message: telebot.types.Message):
+    bot.reply_to(message, f"Добро пожаловать, {message.chat.username}")
+
+bot.polling(none_stop=True)
